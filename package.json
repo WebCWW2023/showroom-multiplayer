@@ -1,0 +1,27 @@
+{
+  "name": "final_multiplayer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "agora-access-token": "^2.0.4",
+    "agora-rtc-sdk-ng": "^4.15.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "moment": "^2.29.4",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.1.0",
+    "node-pre-gyp": "^0.17.0",
+    "nodemon": "^2.0.19",
+    "socket.io": "^2.3.0",
+    "three-glow-mesh": "^0.1.2", 
+    "uuid": "^8.1.0",
+    "wrtc": "^0.4.7"
+  }
+}

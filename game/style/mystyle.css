@@ -1,0 +1,29 @@
+/*-----------------smallmap-------------------*/
+.smallMap {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  width: 200px;
+  height: 200px;
+  background-image: url('../../static/map/map2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.smallAvtar {
+  width: 20px;
+  height: 20px;
+  background-color: blue;
+  border-radius: 50%;
+  position: absolute;
+  top: 75px;
+  left: 75px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .smallMap {
+    display: none;
+  }
+}

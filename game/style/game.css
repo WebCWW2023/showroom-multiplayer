@@ -1,0 +1,433 @@
+/* 
+avtarLabel 1
+popup_class 4
+joystick 3
+booster_button 3 
+screenButtonToggle 4
+screenButtonRight 4
+screenButtonLeft 4
+smallMap 5
+shorcutKeyScreen 6 
+newPlayerJoin 7
+loadingScreenContainer 8
+*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  overflow: hidden;
+}
+
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
+}
+
+/*-----------------canvas-------------------*/
+#canvas_floor {
+  width: 100%;
+  height: 100%;
+  display: block;
+  color: rgb(40, 63, 141);
+}
+
+/*-----------------loadingScreen-------------------*/
+.loadingScreenContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  z-index: 8;
+}
+
+.loadingScreen {
+  position: relative;
+  height: 50vh;
+  width: 50vw;
+  background-color: #000000;
+  background-image: url("../../static/images/welcome.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70%;
+}
+
+.loadingCount {
+  position: relative;
+  width: 100%;
+  font-size: 30px;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  font-family: "Lexend Deca", sans-serif;
+}
+
+.shorcutKeyScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: black; */
+  opacity: 0.95;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 6;
+}
+
+.shortcut {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100% !important;
+  height: 100vh;
+  background: #00000063;
+}
+
+.shortcut img {
+  width: 75%;
+  height: 75%;
+}
+
+/*-----------------popup-------------------*/
+
+.popup_class {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    right: -300px;
+    opacity: 0;
+  }
+
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    right: -300px;
+    opacity: 0;
+  }
+
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+/* Modal Content */
+.popup_content_class {
+  margin: auto;
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  width: 50%;
+  background-color: white;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.bannerImageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bannerImage {
+  border: none;
+  margin: 10px;
+  border-radius: 15px;
+  width: 500px;
+  height: 300px;
+}
+
+/*-----------------screenButton-------------------*/
+.screenButtonToggle {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 4;
+  background-image: linear-gradient(90deg, #f65f65, #ff50e8);
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 24px;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.screenButton {
+  /* Make the button a circle */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  /* Add some styling */
+  background-image: linear-gradient(90deg, #f65f65, #ff50e8);
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  /* Add a font awesome icon */
+  font-size: 24px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+
+.screenButtonRight {
+  font-size: 25px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 170px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 4;
+}
+
+.screenButtonLeft {
+  font-size: 25px;
+  position: fixed;
+  top: 10px;
+  left: 60px;
+  width: 350px;
+  display: none;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 4;
+}
+
+.screenButtonsEmoji {
+  position: fixed;
+  top: 68px;
+  left: 0;
+  z-index: 4;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px; 
+  color: white;
+  display: none;
+}
+.screenButtonsEmoji :hover{
+  background-color: skyblue;
+
+}
+
+.emojiButton {
+  position: relative;
+  font-size: 20px;
+  border: 1px solid white;
+  border-radius: 1px;
+  border-radius: 50%;
+  padding: 8px 12px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+/*-----------------avtarLabel-------------------*/
+.avtarLabel {
+  color: white;
+  background: black;
+  padding: 5px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  display: block;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+/*-----------------joystick-------------------*/
+#joystick {
+  position: fixed;
+  bottom: 40px;
+  right: 5%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  z-index: 3;
+  display: none;
+  border: 5px solid white;
+}
+
+#stick {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50%;
+  position: relative;
+  top: 25px;
+  left: 25px;
+}
+
+/*-----------------booster-------------------*/
+.booster_button {
+  position: fixed;
+  bottom: 40px;
+  left: 5%;
+  background-color: black;
+  opacity: 0.5;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50%;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: none;
+  z-index: 3;
+}
+
+/*----------------- image upload -------------------*/
+.file-upload {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  background: #043173;
+  padding: 10px;
+  border-radius: 7px;
+  border: none;
+  color: #fff;
+}
+
+.file-submit {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  background: #043173;
+  padding: 10px;
+  border-radius: 7px;
+  border: none;
+  color: #fff;
+}
+
+.ytVideo {
+  display: none;
+}
+
+.newPlayerJoin {
+  position: fixed;
+  top: 10px;
+  left: 45%;
+  color: white;
+  background-color: black;
+  opacity: 0.5;
+  padding: 10px;
+  border-radius: 10px;
+  display: none;
+  z-index: 7;
+}
+
+.hideButton {
+  display: none !important;
+}
+
+@media screen and (max-width: 900px) and (min-width: 600px) {
+  .loadingScreen {
+    height: 35vh;
+    width: 35vw;
+    background-size: 100%;
+  }
+
+  .shortcut img {
+    width: 40%;
+    height: 40%;
+  }
+
+  .bannerImage {
+    width: 300px;
+    height: 100px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .screenButtonLeft {
+    flex-direction: column;
+    top: 68px;
+    left: 0px;
+    width: max-content;
+    height: max-content;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .screenButtonsEmoji {
+    top: 0px;
+    left: 60px; 
+  }
+
+  .loadingScreen {
+    height: 40vh;
+    width: 80vw;
+    background-size: 100%;
+
+  }
+
+  .shortcut img {
+    width: 100%;
+    height: 40%;
+  }
+
+  .bannerImage {
+    width: 200px;
+    height: 100px;
+  }
+}

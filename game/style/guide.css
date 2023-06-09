@@ -1,0 +1,133 @@
+.ui-formSlide {
+  display: block;
+  position: relative;
+  padding: 0;
+  font-size: 0;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 1;
+  height: 100%;
+}
+
+.ui-formSlide li[data-step] {
+  width: 100%;
+  vertical-align: top;
+  font-size: 16px;
+  display: none;
+  white-space: normal;
+}
+
+.ui-formSlide li[data-step] .ui-step-content {
+  opacity: 0;
+  -webkit-transition: 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) all;
+  -moz-transition: 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) all;
+  -ms-transition: 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) all;
+  -o-transition: 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) all;
+  transition: 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) all;
+}
+
+.ui-formSlide li[data-step] .ui-step-content.in {
+  opacity: 1;
+}
+
+.ui-formSlide li[data-step].active {
+  display: inline-block;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+li {
+  padding: 5px;
+}
+
+
+ul {
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+.ui-scalable {
+  transform-origin: 0 0;
+}
+
+.card {
+  background: #000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+
+.table {
+  display: table;
+  width: 100%;
+}
+
+.table .table-row {
+  display: table-row;
+}
+
+.table .table-cell {
+  display: table-cell;
+}
+
+.v-align-top {
+  vertical-align: top;
+}
+
+.v-align-middle {
+  vertical-align: middle;
+}
+
+.v-align-bottom {
+  vertical-align: bottom;
+}
+
+.wrapper {
+  width: 35%;
+  height: 100%;
+  margin: auto;
+  position: relative;
+  top: 25%;
+  text-align: center;
+}
+
+.buttons {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.guidebutton {
+  display: inline-block;
+  vertical-align: middle;
+  background-image: linear-gradient(90deg, #f65f65, #ff50e8);
+  border-radius: 15px;
+  padding: 5px 20px;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.guidebutton:hover {
+  background: #a028b4;
+}
+
+.guidebutton:active,
+button:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 900px) and (min-width: 600px) {
+  .wrapper {
+    width: 60%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    width: 80%;
+  }
+}

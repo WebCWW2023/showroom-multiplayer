@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../node_modules/socket.io-client/dist/socket.io.js"></script>
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <script src="admin.js" type="module" defer></script> -->
+    <table id="playerTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Room Name</th>
+                <th>Avtar Id</th>
+                <th>Name</th>
+                <th>Socket Id</th>
+                <th>Voice Id</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+    </table>
+    <script>
+
+        const socket = io();
+        socket.on('connect', () => {
+            socket.emit('receiveData');
+            socket.on('receiveData', function (data) {
+                let table = document.getElementById("playerTable");
+
+                Object.values(data).map(players => {
+                    Object.values(players).map((singleplayer, index) => {
+                        // Create row element  
+                        let row = document.createElement("tr")
+
+                        // Create cells
+                        var c1 = document.createElement("td")
+                        var c2 = document.createElement("td")
+                        var c3 = document.createElement("td")
+                        var c4 = document.createElement("td")
+                        var c5 = document.createElement("td")
+                        var c6 = document.createElement("td")
+                        var c7 = document.createElement("td")
+
+                        c1.innerText = "s1";
+                        c2.innerText = singleplayer.roomName;
+                        c3.innerText = singleplayer.avtarId;
+                        c4.innerText = singleplayer.avtarName;
+                        c5.innerText = singleplayer.socket_id;
+                        c6.innerText = singleplayer.voiceId;
+
+                        var buttonElement = document.createElement("button")
+                        buttonElement.innerHTML = 'Remove Player';
+                        buttonElement.style.cursor = "pointer"
+                        c7.appendChild(buttonElement);
+
+                        c7.onclick = function () {
+                            let data = {
+                                avtarName: singleplayer.avtarName,
+                                roomName: singleplayer.roomName,
+                                socket_id: singleplayer.socket_id,
+                            }
+                            socket.emit('deletePlayerAdmin', data);
+                            // window.location.reload();
+                        }
+                        // Append cells to row
+                        row.appendChild(c1);
+                        row.appendChild(c2);
+                        row.appendChild(c3);
+                        row.appendChild(c4);
+                        row.appendChild(c5);
+                        row.appendChild(c6);
+                        row.appendChild(c7);
+                        // Append row to table body
+                        table.appendChild(row)
+                    })
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>
